@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reiki Caani </title>
+    <style>
+/* Nuevos estilos para el modal de contacto */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .contact-modal-content {
+            background-color: #00605b;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 500px;
+            color: #9cffd4;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+
+        .contact-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #9cffd4;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .contact-modal-close:hover {
+            color: #00fafe;
+        }
+
+        .contact-modal-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00fafe;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(156, 255, 212, 0.1);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #9cffd4;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: rgba(0, 250, 254, 0.2);
+            transform: translateX(5px);
+        }
+
+        .social-link i {
+            font-size: 24px;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .social-link.whatsapp {
+            background-color: rgba(37, 211, 102, 0.1);
+        }
+
+        .social-link.whatsapp:hover {
+            background-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .social-link.facebook {
+            background-color: rgba(66, 103, 178, 0.1);
+        }
+
+        .social-link.facebook:hover {
+            background-color: rgba(66, 103, 178, 0.2);
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(45deg, rgba(225, 48, 108, 0.1), rgba(253, 228, 0, 0.1));
+        }
+
+        .social-link.instagram:hover {
+            background: linear-gradient(45deg, rgba(225, 48, 108, 0.2), rgba(253, 228, 0, 0.2));
+        }
+
+ /* ... (todos los estilos anteriores se mantienen) ... */
+
+        /* Nuevos estilos para la sección del calendario */
+        .calendar-section {
+            padding: 60px 0;
+            background-color: #f8f8f8;
+            margin-top: 50px;
+        }
+
+        .calendar-title {
+            font-size: 36px;
+            color: #00605b;
+            margin-bottom: 30px;
+        }
+
+        .calendar-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .calendar-frame {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
+            .calendar-frame {
+                width: 100%;
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .calendar-frame {
+                height: 400px;
+            }
+        }
+
+
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+            background-color: #EAE9E7;
+            text-align: center;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #00605b;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            color: #9cffd4;
+            font-size: 28px;
+            font-weight: bold;
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            background-color: #00fafe;
+            color: rgb(0, 74, 84);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 24px;
+        }
+
+        /* Sección Hero */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Dirección */
+        .address-bar {
+            background-color: #00605b;
+            padding: 45px;
+        }
+
+        .address-bar h1 {
+            color: #9cffd4;
+            font-size: 42px;
+            margin: 0;
+        }
+
+        /* Sección Sobre Mí - Moderna */
+        .about-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 10%;
+            background-color: #f8f8f8;
+            margin: 50px 0;
+        }
+
+        .about-content {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            color: #00605b;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background-color: #A187C0;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            color: #8B6E4E;
+            margin-top: 30px;
+        }
+
+        /* Sección Servicios */
+        .services-title {
+            font-size: 36px;
+            margin: 50px 0 30px;
+            color: #00605b;
+        }
+
+        .services-wrapper {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .services-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .service {
+            flex: 0 0 25%;
+            background: #f4f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #00605b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #004d46;
+        }   
+        
+        .service img {
+            width: 180px;
+            height: 300px;
+            object-fit: contain;
+        }
+        
+        .service h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        
+        .info-btn {
+            background-color: #A187C0;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .info-btn:hover {
+            background-color: #8B6EAE;
+        }
+        
+        /* Modal para mostrar la imagen de información */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            margin-top: 5%;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .main-title h1 {
+  font-size: 52px; /* Tamaño más grande */
+  margin: 5px 0; /* Espaciado entre líneas */
+  line-height: 1.2; /* Altura de línea */
+  letter-spacing: 2px; /* Espaciado entre letras */
+}
+
+
+  /* WhatsApp Button */
+  .calendar-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-button {
+            background-color: #00605b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+        }
+
+        .calendar-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .calendar-button i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .calendar-frame {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .calendar-frame {
+                width: 100%;
+                height: 500px;
+            }
+            
+            .calendar-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .calendar-button {
+                width: 80%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .calendar-frame {
+                height: 400px;
+            }
+            
+            .calendar-button {
+                width: 100%;
+                padding: 12px 20px;
+            }
+        }
+
+        /* Collage de servicios */
+        .services-collage {
+            padding: 60px 5%;
+            background-color: #f8f8f8;
+        }
+
+        .collage-title {
+            font-size: 36px;
+            color: #00605b;
+            margin-bottom: 40px;
+        }
+
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collage-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 250px;
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .collage-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .collage-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,96,91,0.9), transparent);
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #00605b;
+            color: #9cffd4;
+            padding: 40px 5%;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #00fafe;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #9cffd4;
+            margin: 10px 0;
+            line-height: 1.6;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-column a:hover {
+            color: #00fafe;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            color: #9cffd4;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00fafe;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(156, 255, 212, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .collage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .collage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+ <div class="navbar">
+        <div class="nav-links">
+            <a href="#servicios">SERVICIOS</a>
+            <a href="#sobre-mi">SOBRE MÍ</a>
+        </div>
+        <div class="main-title">
+            <h1>REIKI CAANI</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#" id="contactar-btn">CONTACTAR</a>
+        </div>
+    </div>
+<div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <span class="contact-modal-close">&times;</span>
+            <h2 class="contact-modal-title">Contáctame</h2>
+            <div class="social-links">
+                <a href="https://wa.me/525527296957?text=Hola,%20me%20interesa%20saber%20más%20sobre%20tus%20servicios" class="social-link whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp: 55 2729 6957
+                </a>
+                <a href="https://www.facebook.com/reiki.caani" class="social-link facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook: Reiki.Caani
+                </a>
+                <a href="https://www.instagram.com/reiki.caani/" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    Instagram: @reiki.caani
+
+                </a>
+                <a href="mailto:reiki.caani@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                    Email: reiki.caani@gmail.com
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!-- Sección Hero con imagen -->
+    <div class="hero">
+        <img src="buda.png" alt="Buda">
+    </div>
+
+    <!-- Dirección -->
+    <div class="address-bar">
+        <h1>Campeche 10, Roma Sur, Cuauhtémoc, </h1>  <h1> 06760 Ciudad de México, CDMX</h1>
+    </div>
+
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="about-section">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="mi.jpg" alt="Foto del terapeuta">
+            </div>
+            <div class="about-text">
+                <h2>Sobre Mí</h2>
+                <p>Mi nombre es Sergio Eduardo, aunque muchos me conocen como Cani. Desde temprana edad, el arte y la creatividad fueron parte fundamental de mi vida, lo que me llevó a obtener dos licenciaturas: Diseño Gráfico y Arquitectura. Sin embargo, con el tiempo descubrí que mi verdadera pasión iba más allá de la estética y la construcción física; encontré en la sanación y el bienestar el propósito que realmente resonaba con mi alma.
+                </p>
+                <p>Por ello, decidí involucrarme en diversas técnicas que ayudan a las personas a encontrar su camino hacia el equilibrio y la armonía. A lo largo de mi trayectoria, me he especializado en Reiki, disciplina en la que he obtenido una maestría y con la que cuento con más de 11 años de experiencia. También realizo Acupuntura y Medicina China Tradicional, así como lecturas de cartas de tarot, astrología, armonizaciones en general, numerología y gemoterapia, entre otras herramientas que utilizo para guiar a quienes buscan respuestas y claridad en su vida.
+                </p>
+                <p>“La energía nos conecta, nos sana y nos transforma. Mi misión es ayudarte a encontrar ese equilibrio entre tu cuerpo, tu mente y tu espíritu, clave para una vida plena.”</p>
+                <div class="signature">Sergio Eduardo</div>
+            </div>
+        </div>
+    </section>
+
+
+ 
+<section class="servicios">
+    <h2 class="collage-title">Servicios</h2>
+    <section id="servicios"></section>
+    <div class="services-wrapper">
+        <div class="services-container" id="services">
+            <div class="service">
+                <img src="acupuntura.png" alt="Acupuntura">
+                <h3>Acupuntura</h3>
+                <button class="info-btn" onclick="openModal('a.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="tarot.jpg" alt="Tarot">
+                <h3>Tarot</h3>
+                <button class="info-btn" onclick="openModal('t.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="reiki.png" alt="Reiki">
+                <h3>Reiki</h3>
+                <button class="info-btn" onclick="openModal('r.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="numerologia.png" alt="Numerología">
+                <h3>Numerología</h3>
+                <button class="info-btn" onclick="openModal('n.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="chacras.png" alt="Equilibrio de Chacras">
+                <h3>Armonizacion</h3>
+                <button class="info-btn" onclick="openModal('ar.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="angeles.png" alt="Lectura de Ángeles">
+                <h3>Lectura de Ángeles</h3>
+                <button class="info-btn" onclick="openModal('l.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="Theta.jpg" alt="ThetaHealing">
+                <h3>ThetaHealing</h3>
+                <button class="info-btn" onclick="openModal('te.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="biodescodificacion.jpg" alt="Biodescodificación">
+                <h3>Biodescodificación</h3>
+                <button class="info-btn" onclick="openModal('b.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="Astrologiaa.jpg" alt="Lectura de Ángeles">
+                <h3>Astrologia</h3>
+                <button class="info-btn" onclick="openModal('astrologiaaa.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="babyreikii.jpg" alt="ThetaHealing">
+                <h3>Baby Reiki</h3>
+                <button class="info-btn" onclick="openModal('babyreikiii.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="Pet Reikii.jpg" alt="Biodescodificación">
+                <h3>Pet Reiki</h3>
+                <button class="info-btn" onclick="openModal('pet Reikiii.jpg')">Más información</button>
+            </div>
+              <div class="service">
+                <img src="Nivel de concienciaa.jpg" alt="Lectura de Ángeles">
+                <h3>Nivel de conciencia</h3>
+                <button class="info-btn" onclick="openModal('Nivel de concienciaaa.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="Oraculoo.jpg" alt="ThetaHealing">
+                <h3>Oraculo de vidas pasadas</h3>
+                <button class="info-btn" onclick="openModal('oraculooo.jpg')">Más información</button>
+            </div>
+            <div class="service">
+                <img src="biodescodificacion.jpg" alt="Biodescodificación">
+                <h3>Biodescodificación</h3>
+                <button class="info-btn" onclick="openModal('info_biodescodificacion.jpg')">Más información</button>
+            </div>
+                        <div class="service">
+                <img src="biodescodificacion.jpg" alt="Biodescodificación">
+                <h3>Biodescodificación</h3>
+                <button class="info-btn" onclick="openModal('info_biodescodificacion.jpg')">Más información</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="btn" onclick="moveSlide(-1)">⬅️ Anterior</button>
+        <button class="btn" onclick="moveSlide(1)">Siguiente ➡️</button>
+    </div>
+</section>
+    <!-- Modal para mostrar la información -->
+    <div id="infoModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const totalServices = document.querySelectorAll('.service').length;
+        const visibleServices = 4; // Número de servicios visibles al mismo tiempo
+        const container = document.getElementById("services");
+
+        function moveSlide(direction) {
+            const maxIndex = totalServices - visibleServices;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            container.style.transform = `translateX(-${currentIndex * 25}%)`; // Se mueve 25% por cada paso
+        }
+        
+        // Funciones para el modal
+        function openModal(imageSrc) {
+            const modal = document.getElementById('infoModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
+        
+        function closeModal() {
+            document.getElementById('infoModal').style.display = "none";
+        }
+        
+        // Cerrar el modal si se hace clic fuera de la imagen
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+         // Script para el modal de contacto
+        const contactBtn = document.getElementById('contactar-btn');
+        const contactModal = document.getElementById('contactModal');
+        const contactClose = document.querySelector('.contact-modal-close');
+
+        contactBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactModal.style.display = 'block';
+        });
+
+        contactClose.addEventListener('click', function() {
+            contactModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target == contactModal) {
+                contactModal.style.display = 'none';
+            }
+        });
+
+        // Función para desplazamiento suave a las secciones
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('id') !== 'contactar-btn') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    </script>
+
+<section class="calendar-section">
+    <h2 class="calendar-title">Agenda tu Cita</h2>
+    <div class="calendar-container">
+<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ18Ayw0sWXposZITaKrh0JMve2B5NIy-xOUROoPl9zIJuHxG69T-p3hKuYpyuRRnqdpLD40ZafU?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+<!-- end Google Calendar Appointment Scheduling -->        
+        <div class="calendar-buttons">
+   
+
+            </a>
+            <a href="https://wa.me/525527296957?text=Hola,%20me%20interesa%20saber%20más%20sobre%20tus%20servicios" 
+               class="calendar-button whatsapp-button">
+                <i class="fab fa-whatsapp"></i>
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Collage de servicios -->
+
+
+<section class="services-collage">
+    <h2 class="collage-title">Pacientes</h2>
+    <div class="collage-grid">
+        <div class="collage-item">
+            <img src="reikiiii.jpg" alt="Sesión de Reiki">
+            <div class="collage-caption">
+                <h3>Reiki</h3>
+                <p>Armonización energética</p>
+            </div>
+        </div>
+        <div class="collage-item">
+            <img src="acupunturaaaa.jpg" alt="Acupuntura">
+            <div class="collage-caption">
+                <h3>Acupuntura</h3>
+                <p>Medicina tradicional china</p>
+            </div>
+        </div>
+        <div class="collage-item">
+            <img src="tarotttt.jpg" alt="Lectura de Tarot">
+            <div class="collage-caption">
+                <h3>Tarot</h3>
+                <p>Guía y claridad</p>
+            </div>
+        </div>
+
+
+        <div class="collage-item">
+            <img src="chakrassss.jpg" alt="Equilibrio de Chakras">
+            <div class="collage-caption">
+                <h3>Chakras</h3>
+                <p>Balance energético</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pie de página -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>Contacto</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Campeche 10, Roma Sur, CDMX</p>
+            <p><i class="fas fa-phone"></i> 55 2729 6957</p>
+            <p><i class="fas fa-envelope"></i> reiki.caani@gmail.com
+</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/reiki.caani/"><i class="fab fa-instagram"></i></a>
+ 
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Horario</h3>
+            <p>Lunes a Viernes: 11:00 - 19:00</p>
+         
+            <p>Sabados y Domingos: Cerrado</p>
+        </div>
+        <div class="footer-column">
+            <h3>Enlaces rápidos</h3>
+            <a href="#servicios">Servicios</a>
+            <a href="#sobre-mi">Sobre mí</a>
+         
+          
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2025 Reiki Caani Roma. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>

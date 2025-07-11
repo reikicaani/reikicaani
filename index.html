@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Detección dispositivo</title>
+<script>
+  window.onload = function() {
+    // Detectar dispositivo móvil usando userAgent
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // Redirigir a versión móvil
+      window.location.href = "indexxx.html";
+    } else {
+      // Redirigir a versión escritorio
+      window.location.href = "indexx.html";
+    }
+  }
+</script>
+</head>
+<body>
+
+</body>
+</html>

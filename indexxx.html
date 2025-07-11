@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reiki Caani - Móvil</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+     #myModal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+    #modalContent {
+      margin: 10% auto;
+      display: block;
+      max-width: 80%;
+    }
+    .close {
+      position: absolute;
+      top: 10px; right: 25px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+      /* Oculta la versión móvil en pantallas grandes */
+  .mobile-version {
+    display: none;
+  }
+
+  /* Oculta la versión escritorio en pantallas pequeñas */
+  .desktop-version {
+    display: block;
+  }
+
+  /* Media query para móviles (ejemplo: máximo 768px) */
+  @media (max-width: 768px) {
+    .mobile-version {
+      display: block;
+    }
+    .desktop-version {
+      display: none;
+    }
+  }
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #EAE9E7;
+      color: #333;
+    }
+.service {
+  background-color: #f4f8f8;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.service img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.service h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #00605b;
+}
+
+ .service button {
+      background-color: #b700ff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .navbar {
+      background-color: #00605b;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .navbar h1 {
+      color: #9cffd4;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .nav-links {
+      margin-top: 10px;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      margin: 5px 10px;
+      color: #00fafe;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .address-bar {
+      background-color: #00605b;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .address-bar h2 {
+      color: #9cffd4;
+      font-size: 18px;
+      margin: 5px 0;
+    }
+      .service button:hover {
+      background-color: #0056b3;
+    }
+    #image-viewer {
+      margin-top: 30px;
+      text-align: center;
+    }
+    #viewer-img {
+      max-width: 90%;
+      display: none;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="movile-version">
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>REIKI CAANI</h1>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre Mí</a>
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  <div class="hero">
+    <img src="buda.png" alt="Imagen Reiki Caani">
+  </div>
+
+  <!-- Dirección -->
+  <div class="address-bar">
+    <h2>Campeche 10, Roma Sur, Cuauhtémoc</h2>
+    <h2>06760 Ciudad de México, CDMX</h2>
+  </div>
+  <!-- Sobre Mí -->
+  <section id="sobre-mi" class="about-section" style="padding: 20px; background-color: #f8f8f8;">
+    <img src="mi.jpg" alt="Foto del terapeuta" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
+    <h2 style="color: #00605b; font-size: 22px; margin-bottom: 10px; text-align: center;">Sobre Mí</h2>
+    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 15px;">
+      Mi nombre es Sergio Eduardo, aunque muchos me conocen como Cani. Desde temprana edad, el arte y la creatividad fueron parte fundamental de mi vida, lo que me llevó a obtener dos licenciaturas: Diseño Gráfico y Arquitectura.
+    </p>
+    <p style="font-size: 16px; line-height: 1.6; margin-bottom: 15px;">
+      Con el tiempo descubrí que mi verdadera pasión iba más allá de la estética; encontré en la sanación y el bienestar el propósito que realmente resonaba con mi alma.
+    </p>
+    <p style="font-size: 16px; line-height: 1.6;">
+      Me especializo en Reiki (más de 11 años de experiencia), Acupuntura, Medicina China, Tarot, Astrología, Numerología y más. “La energía nos conecta, nos sana y nos transforma. Mi misión es ayudarte a encontrar ese equilibrio entre tu cuerpo, tu mente y tu espíritu, clave para una vida plena.”
+    </p>
+    <p style="font-family: 'Brush Script MT', cursive; font-size: 20px; color: #8B6E4E; text-align: right; margin-top: 20px;">Sergio Eduardo</p>
+  </section>
+<section id="servicios" class="services" style="padding: 20px; background-color: #ffffff;">
+  <h2 style="color: #00605b; font-size: 22px; text-align: center; margin-bottom: 20px;">Servicios</h2>
+
+   <div class="service">
+    <img src="acupuntura.png" alt="Acupuntura">
+    <h3>Acupuntura</h3>
+    <button onclick="openModal('a.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="tarot.jpg" alt="Tarot">
+    <h3>Tarot</h3>
+    <button onclick="openModal('t.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="reiki.png" alt="Reiki">
+    <h3>Reiki</h3>
+    <button onclick="openModal('r.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="numerologia.png" alt="Numerología">
+    <h3>Numerología</h3>
+    <button onclick="openModal('n.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="chacras.png" alt="Equilibrio de Chacras">
+    <h3>Armonización</h3>
+    <button onclick="openModal('ar.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="angeles.png" alt="Lectura de Ángeles">
+    <h3>Lectura de Ángeles</h3>
+    <button onclick="openModal('l.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="Theta.jpg" alt="ThetaHealing">
+    <h3>ThetaHealing</h3>
+    <button onclick="openModal('te.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="biodescodificacion.jpg" alt="Biodescodificación">
+    <h3>Biodescodificación</h3>
+    <button onclick="openModal('b.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="Astrologiaa.jpg" alt="Astrología">
+    <h3>Astrología</h3>
+    <button onclick="openModal('astrologiaaa.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="babyreikii.jpg" alt="Baby Reiki">
+    <h3>Baby Reiki</h3>
+    <button onclick="openModal('babyreikiii.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="Pet Reikii.jpg" alt="Pet Reiki">
+    <h3>Pet Reiki</h3>
+    <button onclick="openModal('pet Reikiii.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="Nivel de concienciaa.jpg" alt="Nivel de conciencia">
+    <h3>Nivel de conciencia</h3>
+    <button onclick="openModal('Nivel de concienciaaa.jpg')">Más información</button>
+  </div>
+
+  <div class="service">
+    <img src="Oraculoo.jpg" alt="Oráculo de vidas pasadas">
+    <h3>Oráculo de vidas pasadas</h3>
+    <button onclick="openModal('oraculooo.jpg')">Más información</button>
+  </div>
+
+  <!-- Visor para mostrar la imagen seleccionada -->
+  <div id="image-viewer">
+    <img id="viewer-img" src="" alt="Vista previa">
+  </div>
+
+  <!-- Script -->
+  <script>
+    function openModal(imagePath) {
+      const viewer = document.getElementById("viewer-img");
+      viewer.src = imagePath;
+      viewer.style.display = "block";
+      viewer.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+</section>
+  <!-- Contacto por WhatsApp -->
+  <section class="contact" style="padding: 20px; text-align: center;">
+    <a href="https://wa.me/525527296957?text=Hola,%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tus%20servicios"
+       target="_blank"
+       style="display: inline-block; margin: 10px auto; padding: 15px 30px; background-color: #25D366; color: white; text-decoration: none; border-radius: 30px; font-size: 16px;">
+      <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+    </a>
+  </section>
+
+  <!-- Agenda tu cita -->
+  <section class="calendar-section" style="padding: 20px; background-color: #f8f8f8;">
+    <h2 style="color: #00605b; font-size: 22px; text-align: center; margin-bottom: 15px;">Agenda tu Cita</h2>
+    <div class="calendar-container" style="max-width: 100%; overflow: hidden;">
+      <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ18Ayw0sWXposZITaKrh0JMve2B5NIy-xOUROoPl9zIJuHxG69T-p3hKuYpyuRRnqdpLD40ZafU?gv=true"
+              style="border: none; width: 100%; height: 500px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);"
+              frameborder="0"
+              allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+  <!-- Collage de Pacientes -->
+  <section class="services-collage" style="padding: 20px; background-color: #f8f8f8;">
+    <h2 style="color: #00605b; font-size: 22px; text-align: center; margin-bottom: 20px;">Pacientes</h2>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+      <div>
+        <img src="reikiiii.jpg" alt="Sesión de Reiki" style="width: 100%; border-radius: 10px;">
+        <p style="margin-top: 8px; font-weight: bold; text-align: center;">Reiki - Armonización energética</p>
+      </div>
+      <div>
+        <img src="acupunturaaaa.jpg" alt="Acupuntura" style="width: 100%; border-radius: 10px;">
+        <p style="margin-top: 8px; font-weight: bold; text-align: center;">Acupuntura - Medicina tradicional china</p>
+      </div>
+      <div>
+        <img src="tarotttt.jpg" alt="Lectura de Tarot" style="width: 100%; border-radius: 10px;">
+        <p style="margin-top: 8px; font-weight: bold; text-align: center;">Tarot - Guía y claridad</p>
+      </div>
+      <div>
+        <img src="chakrassss.jpg" alt="Chakras" style="width: 100%; border-radius: 10px;">
+        <p style="margin-top: 8px; font-weight: bold; text-align: center;">Chakras - Balance energético</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer style="background-color: #00605b; color: #9cffd4; text-align: center; padding: 30px 15px; font-size: 14px;">
+    <div style="margin-bottom: 20px;">
+      <p><strong>Contacto:</strong></p>
+      <p>📍 Campeche 10, Roma Sur, CDMX</p>
+      <p>📞 55 2729 6957</p>
+      <p>📧 reiki.caani@gmail.com</p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <p><strong>Horario:</strong></p>
+      <p>Lunes a Viernes: 11:00 - 19:00</p>
+      <p>Sábados y Domingos: Cerrado</p>
+    </div>
+
+    <div>
+      <a href="https://www.facebook.com/reiki.caani" style="color: #9cffd4; margin: 0 10px;" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/reiki.caani/" style="color: #9cffd4; margin: 0 10px;" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/525527296957" style="color: #9cffd4; margin: 0 10px;" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <p style="margin-top: 20px;">&copy; 2025 Reiki Caani Roma. Todos los derechos reservados.</p>
+  </footer>
+
+
+</div>
